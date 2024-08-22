@@ -1,1 +1,32 @@
 
+import java.util.Scanner;
+
+public class SistemaAvaliacaoFAESA {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Digite a quantidade de notas para o cálculo da média semestral: ");
+        int quantidadeNotas = scanner.nextInt();
+        double somaNotas = 0;
+        for (int i = 1; i <= quantidadeNotas; i++) {
+            System.out.print("Digite a nota " + i + ": ");
+            double nota = scanner.nextDouble();
+            somaNotas += nota;
+        }
+        double media = somaNotas / quantidadeNotas;
+        System.out.print("Digite o número total de aulas: ");
+        int totalAulas = scanner.nextInt();
+
+        System.out.print("Digite o número total de faltas: ");
+        int totalFaltas = scanner.nextInt();
+        double percentualFrequencia = ((double) (totalAulas - totalFaltas) / totalAulas) * 100;
+        if (percentualFrequencia < 75) {
+            System.out.println("Reprovado por faltas.");
+        } else if (media >= 7) {
+            System.out.println("Aprovado.");
+        } else if (media >= 4 && media < 7) {
+            System.out.println("Recuperação.");
+        } else {
+            System.out.println("Reprovado por nota.");
+        }
+    }
+}
