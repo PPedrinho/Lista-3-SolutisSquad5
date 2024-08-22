@@ -1,1 +1,32 @@
+import java.util.Scanner;
 
+public class NEsimoFibonacci {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Digite o valor de n para encontrar o n-ésimo termo da sequência de Fibonacci: ");
+        int n = scanner.nextInt();
+
+        if (n <= 0) {
+            System.out.println("O valor de n deve ser um número inteiro positivo.");
+        } else {
+            long fibonacci = fibonacciNEsimo(n);
+            System.out.println("O " + n + "º termo da sequência de Fibonacci é: " + fibonacci);
+        }
+    }
+    public static long fibonacciNEsimo(int n) {
+        if (n == 1 || n == 2) {
+            return 1;
+        }
+
+        long num1 = 1, num2 = 1;
+        long termo = 1;
+
+        for (int i = 3; i <= n; i++) {
+            termo = num1 + num2;
+            num1 = num2;
+            num2 = termo;
+        }
+
+        return termo;
+    }
+}
