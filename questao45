@@ -1,1 +1,16 @@
+import java.util.Scanner;
 
+public class MaiorValorLista {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        double maiorValor = Double.NEGATIVE_INFINITY;
+        for (int i = 1; i <= 100; i++) {
+            System.out.print("Digite o valor " + i + ": ");
+            double valor = scanner.nextDouble();
+            if (valor > maiorValor) {
+                maiorValor = valor;
+            }
+        }
+        System.out.println("O maior valor fornecido foi: " + maiorValor);
+    }
+}
