@@ -1,1 +1,89 @@
+import java.util.Scanner;
 
+public class ClinicaRelatorio {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        int quantidadePacientes = 0;
+        int somaIdadesHomens = 0;
+        int quantidadeHomens = 0;
+        int quantidadeMulheresAlturaPeso = 0;
+        int quantidadePessoasIdade1825 = 0;
+        String nomePacienteMaisVelho = "";
+        int idadeMaisVelho = Integer.MIN_VALUE;
+        String nomeMulherMaisBaixa = "";
+        double alturaMulherMaisBaixa = Double.MAX_VALUE;
+
+        while (true) {
+            System.out.print("Digite o nome do paciente (ou 'fim' para encerrar): ");
+            String nome = scanner.nextLine();
+            if (nome.equalsIgnoreCase("fim")) {
+                break;
+            }
+
+            System.out.print("Digite o sexo do paciente (M/F): ");
+            char sexo = scanner.next().toUpperCase().charAt(0);
+            System.out.print("Digite a idade do paciente: ");
+            int idade = scanner.nextInt();
+            System.out.print("Digite o peso do paciente (em kg): ");
+            double peso = scanner.nextDouble();
+            System.out.print("Digite a altura do paciente (em metros): ");
+            double altura = scanner.nextDouble();
+            
+            scanner.nextLine();
+            quantidadePacientes++;
+            if (sexo == 'M') {
+                somaIdadesHomens += idade;
+                quantidadeHomens++;
+            }
+            if (sexo == 'F' && altura >= 1.60 && altura <= 1.70 && peso > 70) {
+                quantidadeMulheresAlturaPeso++;
+            }
+            if (idade >= 18 && idade <= 25) {
+                quantidadePessoasIdade1825++;
+            }
+            if (idade > idadeMaisVelho) {
+                idadeMaisVelho = idade;
+                nomePacienteMaisVelho = nome;
+            }
+            if (sexo == 'F' && altura < alturaMulherMaisBaixa) {
+                alturaMulherMaisBaixa = altura;
+                nomeMulherMaisBaixa = nome;
+            }
+        }
+        double mediaIdadeHomens = (quantidadeHomens > 0) ? (double) somaIdadesHomens / quantidadeHomens : 0;
+        System.out.println("\nRelatório da Clínica:");
+        System.out.println("Quantidade de pacientes: " + quantidadePacientes);
+        System.out.println("Média de idade dos homens: " + mediaIdadeHomens);
+        System.out.println("Quantidade de mulheres com altura entre 1,60 e 1,70 e peso acima de 70kg: " + quantidadeMulheresAlturaPeso);
+        System.out.println("Quantidade de pessoas com idade entre 18 e 25 anos: " + quantidadePessoasIdade1825);
+        System.out.println("Nome do paciente mais velho: " + nomePacienteMaisVelho);
+        System.out.println("Nome da mulher mais baixa: " + nomeMulherMaisBaixa);
+        String nomePacienteIMCAlto = "";
+        double maiorIMC = 0;
+        
+        System.out.println("\nAgora, vamos calcular o IMC de cada paciente.");
+        System.out.println("Digite as informações novamente (ou 'fim' para encerrar):");
+
+        while (true) {
+            System.out.print("Digite o nome do paciente (ou 'fim' para encerrar): ");
+            String nome = scanner.nextLine();
+            if (nome.equalsIgnoreCase("fim")) {
+                break;
+            }
+
+            System.out.print("Digite o peso do paciente (em kg): ");
+            double peso = scanner.nextDouble();
+
+            System.out.print("Digite a altura do paciente (em metros): ");
+            double altura = scanner.nextDouble();
+            scanner.nextLine();
+            double imc = peso / (altura * altura);
+            if (imc > maiorIMC) {
+                maiorIMC = imc;
+                nomePacienteIMCAlto = nome;
+            }
+        }
+        System.out.println("Paciente com o maior IMC: " + nomePacienteIMCAlto + " (IMC = " + maiorIMC + ")");
+    }
+}
