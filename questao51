@@ -1,1 +1,17 @@
 
+
+import java.util.Scanner;
+
+public class SequenciaTribonacci {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Digite o valor de n para exibir os n primeiros termos da sequência de Tribonacci: ");
+        int n = scanner.nextInt();
+
+        if (n <= 0) {
+            System.out.println("O valor de n deve ser um número inteiro positivo.");
+        } else {
+            imprimirTribonacci(n);
+        }
+    }
