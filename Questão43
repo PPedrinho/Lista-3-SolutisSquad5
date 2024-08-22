@@ -1,1 +1,18 @@
+import java.util.Scanner;
 
+public class MediaAritmetica {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        double soma = 0;
+        for (int i = 1; i <= 500; i++) {
+            System.out.print("Digite o valor " + i + ": ");
+            double valor = scanner.nextDouble();
+            soma += valor;
+        }
+        double media = soma / 500;
+
+        System.out.println("A média aritmética dos 500 valores é: " + media);
+    }
+}
+
+// A saída da media aritmética dos 500 valores é 17.5.
