@@ -1,1 +1,28 @@
+import java.util.Scanner;
 
+public class ContagemMaioresDeIdade {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        int homensMaioresDeIdade = 0;
+        int mulheresMaioresDeIdade = 0;
+        for (int i = 1; i <= 200; i++) {
+            System.out.println("Pessoa " + i);
+            char sexo;
+            do {
+                System.out.print("Digite o sexo (M para masculino, F para feminino): ");
+                sexo = scanner.next().toUpperCase().charAt(0);
+            } while (sexo != 'M' && sexo != 'F');
+            System.out.print("Digite a idade: ");
+            int idade = scanner.nextInt();
+            if (idade >= 18) {
+                if (sexo == 'M') {
+                    homensMaioresDeIdade++;
+                } else if (sexo == 'F') {
+                    mulheresMaioresDeIdade++;
+                }
+            }
+        }
+        System.out.println("Quantidade de homens maiores de idade: " + homensMaioresDeIdade);
+        System.out.println("Quantidade de mulheres maiores de idade: " + mulheresMaioresDeIdade);
+    }
+}
