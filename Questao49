@@ -1,1 +1,12 @@
-
+public class FibonacciSequence {
+    public static void main(String[] args) {
+        long num1 = 1, num2 = 1;
+        System.out.print(num1 + ", " + num2);
+        for (int i = 3; i <= 50; i++) {
+            long proximoNum = num1 + num2;
+            System.out.print(", " + proximoNum);
+            num1 = num2;
+            num2 = proximoNum;
+        }
+    }
+}
